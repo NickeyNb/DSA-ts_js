@@ -1,19 +1,18 @@
 // Arrays
-/*
-*
-1- An array is a ds that can hold a collection of values
-2- Arrays can contain a (mix of different data types). You can store strings, booleans, numbers, or even objects all in the same array.
-3- Arrays are (resizable). You don't have to declare the size of an array before creating it.
-4- Js arrays are 0-indexed and the insertion order is maintained.
-5- Arrays are (iterables). They can be used with a for-of loop.
+/**
+*1- An array is a ds that can hold a collection of values
+*2- Arrays can contain a (mix of different data types). You can store strings, booleans, numbers, or even objects all in the same array.
+*3- Arrays are (resizable). You don't have to declare the size of an array before creating it.
+*4- Js arrays are 0-indexed and the insertion order is maintained.
+*5- Arrays are (iterables). They can be used with a for-of loop.
 
-// Time Complexities
+* Time Complexities
     - Insert/ remove from end = O(1)
     - Insert/ remove from beginning = O(n)
     - Access an element = O(1)
     - Searching an element = O(n)
 
-// Time Complexities of some array methods
+* Time Complexities of some array methods
     - push/pop = O(1)
     - shift/unshift/concat/slice/ = O(n)
     - forEach/map/filter/reduce = O(n)
@@ -107,3 +106,5 @@ console.log(ages); // [32, 33, 1, 2, 16, 40]
 
 ages.splice(2, 2, 1, 2); // delete 2 items from 2nd index and after delete add 1 & 2
 console.log(ages);
+
+// ======================
