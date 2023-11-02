@@ -27,8 +27,8 @@
 // console.log(myObj["age"]);
 // console.log(myObj["gender-male"]);
 
+// myObj["five"] = 5;   // add like this
 // myObj.fourth = "fourth";
-// myObj["five"] = 5;
 // console.log(myObj); // {name: 'Nitin', age: 21, gender-male: true, fourth: 'fourth', five: 5}
 // delete myObj.five;
 // console.log(myObj);
@@ -75,3 +75,6 @@ const myObj = {
 };
 console.log(Object.entries(myObj));
 console.log(Object.entries(myObj)[0]); // ['name', 'nitin']
+
+// for object length
+// Get all the keys using Object.keys() it will return the array use .length in that returned array.

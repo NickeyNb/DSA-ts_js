@@ -11,7 +11,7 @@ const map = new Map([
     ["b", 2],
 ]);
 
-map.set("c", 3);
+map.set("c", 3); // for adding
 map.delete("c");
 console.log(map.size); // 2
 // map.clear();
