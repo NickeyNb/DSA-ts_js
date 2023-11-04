@@ -11,3 +11,29 @@
  */
 
 // Approach-3 = O(n)
+function secondLargestSmallest(nums) {
+    let l, s, sl, ss;
+    l = s = sl = ss = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] > sl) {
+            sl = nums[i];
+            if (nums[i] > l) {
+                sl = l;
+                l = nums[i];
+            }
+        } else if (nums[i] < ss) {
+            ss = nums[i];
+            if (nums[i] < s) {
+                ss = s;
+                s = nums[i];
+            }
+        } else {
+        }
+    }
+    console.log(`Largest is ${l} and second largest is ${sl}`);
+    console.log(`Smallest is ${s} and second smallest is ${ss}`);
+}
+const nums = [-1, 1, -2, 2, 8, 6];
+secondLargestSmallest(nums);
+// Largest is 8 and second largest is 6
+// Smallest is -2 and second smallest is -1
