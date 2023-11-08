@@ -18,6 +18,7 @@ class Node {
         this.next = null;
     }
 }
+
 class LinkedList {
     constructor() {
         this.head = null;
@@ -29,21 +30,82 @@ class LinkedList {
     getSize() {
         return this.size;
     }
+    // Adding new node at first = O(1)
     prepend(value) {
         const node = new Node(value);
         if (this.isEmpty()) {
             this.head = node;
         } else {
-            this.node = this.head;
+            node.next = this.head;
             this.head = node;
         }
         this.size++;
     }
+    // Adding new node at last = O(n)
+    append(value) {
+        const node = new Node(value);
+        let temp = this.head;
+        if (this.isEmpty()) {
+            this.head = node;
+        } else {
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = node;
+        }
+        this.size++;
+    }
+    // Adding the new node at given position = O(n)
+    insert(value, pos) {
+        if (pos < 1 || pos > this.size + 1) {
+            console.log("Enter valid position");
+            return;
+        }
+        const node = new Node(value);
+        if (pos === 1) {
+            this.prepend(value);
+        } else {
+            if (pos === this.size + 1) {
+                this.append(value);
+            } else {
+                let countNodes = 1;
+                let curr = this.head;
+                while (curr.next != null) {
+                    if (countNodes === pos - 1) {
+                        node.next = curr.next;
+                        curr.next = node;
+                        return;
+                    }
+                    curr = curr.next;
+                    countNodes++;
+                }
+            }
+        }
+    }
+
+    // Displaying the list = O(n)
+    display() {
+        if (this.isEmpty()) {
+            console.log("List is Empty !");
+        } else {
+            let curr = this.head;
+            let listValues = "";
+            while (curr != null) {
+                listValues += `${curr.value} `;
+                curr = curr.next;
+            }
+            console.log(listValues);
+        }
+    }
 }
 
 const list = new LinkedList();
-console.log("Is list empty ? ", list.isEmpty());
-console.log("Size is : ", list.getSize());
-list.prepend(10);
-list.prepend(20);
-list.prepend(30);
+console.log(list.isEmpty());
+console.log(list.getSize());
+list.append(1);
+list.append(2);
+list.append(3);
+list.display();
+list.insert(4, 0);
+list.display();
+console.log(list.getSize());
