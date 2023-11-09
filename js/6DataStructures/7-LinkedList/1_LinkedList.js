@@ -12,6 +12,7 @@
  * 2) Photos in slide show.
  */
 
+//  node
 class Node {
     constructor(value) {
         this.value = value;
@@ -19,18 +20,24 @@ class Node {
     }
 }
 
+// list
 class LinkedList {
     constructor() {
         this.head = null;
         this.size = 0;
     }
+
+    // empty
     isEmpty() {
         return this.size === 0;
     }
+
+    // get size
     getSize() {
         return this.size;
     }
-    // Adding new node at first = O(1)
+
+    // Appending new node at first O(1)
     prepend(value) {
         const node = new Node(value);
         if (this.isEmpty()) {
@@ -41,13 +48,14 @@ class LinkedList {
         }
         this.size++;
     }
-    // Adding new node at last = O(n)
+
+    // Appending new node at last O()
     append(value) {
         const node = new Node(value);
-        let temp = this.head;
         if (this.isEmpty()) {
             this.head = node;
         } else {
+            let temp = this.head;
             while (temp.next != null) {
                 temp = temp.next;
             }
@@ -56,95 +64,68 @@ class LinkedList {
         this.size++;
     }
 
-    // Adding the new node at given position = O(n)
-    insert(value, pos) {
-        if (pos < 1 || pos > this.size + 1) {
-            console.log("Enter valid position");
-            return;
-        }
-        const node = new Node(value);
-        if (pos === 1) {
-            this.prepend(value);
+    // Inserting new node at given Index(0-based)
+    insert(value, index) {
+        if (index < 0 || index > this.size) {
+            console.log(`Can't insert`);
         } else {
-            if (pos === this.size + 1) {
+            if (index === 0) {
+                this.prepend(value);
+                return;
+            } else if (index === this.size) {
                 this.append(value);
+                return;
             } else {
-                let countNodes = 1;
+                const node = new Node(value);
+                let i = 0;
                 let curr = this.head;
-                while (curr.next != null) {
-                    if (countNodes === pos - 1) {
+                while (curr != null) {
+                    if (i === index - 1) {
                         node.next = curr.next;
                         curr.next = node;
+                        this.size++;
                         return;
                     }
                     curr = curr.next;
-                    countNodes++;
+                    i++;
                 }
             }
         }
     }
 
-    // Remove
-    remove(index) {
-        if (index <= 0 || index > this.size) {
-            console.log("Cannot Delete ");
-            return;
-        }
-        let removeNode;
-        if (index === 1) {
-            removeNode = this.head;
-            this.head = this.head.next;
-        } else {
-            let prev = this.head;
-            for (let i = 0; i < index - 1; i++) {
-                prev = prev.next;
-            }
-            removeNode = prev.next;
-            prev.next = removeNode.next;
-        }
-        this.size--;
-        return removeNode.value;
-    }
-
-    // Search
-    search(value) {
-        if (this.isEmpty()) {
-            return -1;
-        }
-        let i = 1;
-        let curr = this.head;
-        while (curr != null) {
-            if (curr.value === value) {
-                return i;
-            }
-            curr = curr.next;
-            i++;
-        }
-        return -1;
-    }
-    // Displaying the list = O(n)
+    // display the list O(n)
     display() {
         if (this.isEmpty()) {
-            console.log("List is Empty !");
-        } else {
-            let curr = this.head;
-            let listValues = "";
-            while (curr != null) {
-                listValues += `${curr.value} `;
-                curr = curr.next;
-            }
-            console.log(listValues);
+            console.log(`Cannot display, List is empty !`);
         }
+        let curr = this.head;
+        let listValues = "";
+        while (curr != null) {
+            listValues = listValues + `${curr.value}-> `;
+            curr = curr.next;
+        }
+
+        console.log(listValues + "null");
     }
 }
 
+// Creating instance of linkedList
 const list = new LinkedList();
 console.log(list.isEmpty());
-console.log(list.getSize());
-list.append(1);
-list.append(2);
+console.log(`Size is : ${list.getSize()}`);
+
+list.prepend(0);
+list.prepend(1);
+list.prepend(2);
+list.display();
+console.log(`Size is : ${list.getSize()}`);
+
 list.append(3);
+list.append(4);
+list.append(5);
 list.display();
-list.insert(4, 0);
+console.log(`Size is : ${list.getSize()}`);
+
+list.insert(-1, 0);
 list.display();
-console.log(list.getSize());
+console.log(`Size is : ${list.getSize()}`);
