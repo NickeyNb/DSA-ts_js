@@ -55,6 +55,7 @@ class LinkedList {
         }
         this.size++;
     }
+
     // Adding the new node at given position = O(n)
     insert(value, pos) {
         if (pos < 1 || pos > this.size + 1) {
@@ -83,6 +84,44 @@ class LinkedList {
         }
     }
 
+    // Remove
+    remove(index) {
+        if (index <= 0 || index > this.size) {
+            console.log("Cannot Delete ");
+            return;
+        }
+        let removeNode;
+        if (index === 1) {
+            removeNode = this.head;
+            this.head = this.head.next;
+        } else {
+            let prev = this.head;
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next;
+            }
+            removeNode = prev.next;
+            prev.next = removeNode.next;
+        }
+        this.size--;
+        return removeNode.value;
+    }
+
+    // Search
+    search(value) {
+        if (this.isEmpty()) {
+            return -1;
+        }
+        let i = 1;
+        let curr = this.head;
+        while (curr != null) {
+            if (curr.value === value) {
+                return i;
+            }
+            curr = curr.next;
+            i++;
+        }
+        return -1;
+    }
     // Displaying the list = O(n)
     display() {
         if (this.isEmpty()) {
