@@ -12,6 +12,8 @@
  * 2) Photos in slide show.
  */
 
+// Single linked list
+
 //  node
 class Node {
     constructor(value) {
@@ -128,7 +130,7 @@ class LinkedList {
         this.size--;
     }
 
-    // Delete a particular node
+    // Delete a particular node = O(n)
     deleteAtIndex(index) {
         if (index < 0 || index >= this.size) {
             console.log(`Can't delete, invalid index`);
@@ -156,6 +158,7 @@ class LinkedList {
             }
         }
     }
+
     // Display the list = O(n)
     display() {
         if (this.isEmpty()) {
@@ -169,6 +172,24 @@ class LinkedList {
         }
 
         console.log(listValues + "null");
+    }
+
+    // Searching a value in List = O(n)
+    searchElement(value) {
+        if (this.isEmpty()) {
+            console.log(`Can't search, list is empty !`);
+            return;
+        }
+        let curr = this.head;
+        let i = 0;
+        while (curr != null) {
+            if (curr.value === value) {
+                console.log(`Element first found in ${i}th index`);
+            }
+            curr = curr.next;
+            i++;
+        }
+        console.log(`Element is not present in the list !`);
     }
 }
 
@@ -203,5 +224,9 @@ list.display();
 console.log(`Size is : ${list.getSize()}`);
 
 list.deleteAtIndex(2);
+list.display();
+console.log(`Size is : ${list.getSize()}`);
+
+list.searchElement(11);
 list.display();
 console.log(`Size is : ${list.getSize()}`);
