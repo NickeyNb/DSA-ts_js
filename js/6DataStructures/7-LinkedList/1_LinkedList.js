@@ -37,7 +37,7 @@ class LinkedList {
         return this.size;
     }
 
-    // Appending new node at first O(1)
+    // Appending new node at first = O(1)
     prepend(value) {
         const node = new Node(value);
         if (this.isEmpty()) {
@@ -49,7 +49,7 @@ class LinkedList {
         this.size++;
     }
 
-    // Appending new node at last O()
+    // Appending new node at last= O(n)
     append(value) {
         const node = new Node(value);
         if (this.isEmpty()) {
@@ -64,7 +64,7 @@ class LinkedList {
         this.size++;
     }
 
-    // Inserting new node at given Index(0-based)
+    // Inserting new node at given Index(0-based) = O(n)
     insert(value, index) {
         if (index < 0 || index > this.size) {
             console.log(`Can't insert`);
@@ -93,7 +93,70 @@ class LinkedList {
         }
     }
 
-    // display the list O(n)
+    // Delete first node = O(1)
+    deleteAtStart() {
+        if (this.isEmpty()) {
+            console.log("List is Empty !!");
+            return;
+        }
+        let deletedNode = this.head;
+        this.head = this.head.next;
+        deletedNode.next = null;
+        this.size--;
+    }
+
+    // Delete last node = O(n)
+    deleteAtLast() {
+        if (this.isEmpty()) {
+            console.log("List is Empty !!");
+            return;
+        }
+        let deletedNode;
+        let prev = this.head;
+        if (prev.next === null) {
+            this.head = null;
+            this.size--;
+            return;
+        }
+        let curr = this.head.next;
+        while (curr.next != null) {
+            curr = curr.next;
+            prev = prev.next;
+        }
+        prev.next = null;
+        deletedNode = curr;
+        this.size--;
+    }
+
+    // Delete a particular node
+    deleteAtIndex(index) {
+        if (index < 0 || index >= this.size) {
+            console.log(`Can't delete, invalid index`);
+            return;
+        } else {
+            if (index === 0) {
+                this.deleteAtStart();
+                return;
+            } else if (index === this.size - 1) {
+                this.deleteAtLast();
+                return;
+            } else {
+                let i = 0;
+                let curr = this.head;
+                while (curr != null) {
+                    if (i === index - 1) {
+                        let deletedNode = curr.next;
+                        curr.next = deletedNode.next;
+                        deletedNode.next = null;
+                        this.size--;
+                    }
+                    curr = curr.next;
+                    i++;
+                }
+            }
+        }
+    }
+    // Display the list = O(n)
     display() {
         if (this.isEmpty()) {
             console.log(`Cannot display, List is empty !`);
@@ -111,6 +174,7 @@ class LinkedList {
 
 // Creating instance of linkedList
 const list = new LinkedList();
+
 console.log(list.isEmpty());
 console.log(`Size is : ${list.getSize()}`);
 
@@ -127,5 +191,17 @@ list.display();
 console.log(`Size is : ${list.getSize()}`);
 
 list.insert(-1, 0);
+list.display();
+console.log(`Size is : ${list.getSize()}`);
+
+list.deleteAtStart();
+list.display();
+console.log(`Size is : ${list.getSize()}`);
+
+list.deleteAtLast();
+list.display();
+console.log(`Size is : ${list.getSize()}`);
+
+list.deleteAtIndex(2);
 list.display();
 console.log(`Size is : ${list.getSize()}`);
