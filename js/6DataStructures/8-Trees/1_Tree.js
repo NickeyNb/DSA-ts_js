@@ -75,11 +75,39 @@ class BinarySearchTree {
             return this.search(root.left, value);
         }
     }
+
+    // Dfs traversals
+    preorder(root) {
+        if (root) {
+            console.log(root.value);
+            this.preorder(root.left);
+            this.preorder(root.right);
+        }
+    }
+    inorder(root) {
+        if (root) {
+            this.inorder(root.left);
+            console.log(root.value);
+            this.inorder(root.right);
+        }
+    }
+    postorder(root) {
+        if (root) {
+            this.postorder(root.left);
+            this.postorder(root.right);
+            console.log(root.value);
+        }
+    }
 }
 
 const bst = new BinarySearchTree();
 console.log(bst.isEmpty());
 bst.insert(10);
 bst.insert(5);
+bst.insert(11);
 bst.insert(3);
-console.log(bst.search(bst.root, 3));
+bst.insert(7);
+// console.log(bst.search(bst.root, 3));
+bst.preorder(bst.root);
+bst.inorder(bst.root); // print in sorted order
+bst.postorder(bst.root);
