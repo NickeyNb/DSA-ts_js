@@ -76,7 +76,7 @@ class BinarySearchTree {
         }
     }
 
-    // Dfs traversals
+    // Dfs traversals => uses Stack(LIFO)
     preorder(root) {
         if (root) {
             console.log(root.value);
@@ -98,6 +98,22 @@ class BinarySearchTree {
             console.log(root.value);
         }
     }
+
+    // Bfs traversals => uses queue(FIFO)
+    levelOrder() {
+        const queue = [];
+        queue.push(this.root);
+        while (queue.length) {
+            let curr = queue.shift();
+            console.log(curr.value);
+            if (curr.left) {
+                queue.push(curr.left);
+            }
+            if (curr.right) {
+                queue.push(curr.right);
+            }
+        }
+    }
 }
 
 const bst = new BinarySearchTree();
@@ -108,6 +124,7 @@ bst.insert(11);
 bst.insert(3);
 bst.insert(7);
 // console.log(bst.search(bst.root, 3));
-bst.preorder(bst.root);
-bst.inorder(bst.root); // print in sorted order
-bst.postorder(bst.root);
+// bst.preorder(bst.root);
+// bst.inorder(bst.root); // print in sorted order
+// bst.postorder(bst.root);
+bst.levelOrder();
