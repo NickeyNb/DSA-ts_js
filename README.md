@@ -1,3 +1,3 @@
 ## Acknowledgements
 
--   [Data structure and algorithms by Codevolution](https://youtube.com/playlist?list=PLC3y8-rFHvwjPxNAKvZpdnsr41E0fCMMP&si=cnrlMYqqPQnov19o)
+-   [Data structure and Algorithms using javacript or cpp.](https://leetcode.com/nitinnb31122002/)
