@@ -1,3 +1,3 @@
 ## Acknowledgements
 
--   [Data structure and Algorithms using javacript or cpp.](https://leetcode.com/nitinnb31122002/)
+-   [Data structure and Algorithms using javacript.](https://leetcode.com/nitinnb31122002/)
