@@ -14,6 +14,7 @@ const map = new Map([
 map.set("c", 3); // for adding
 map.delete("c");
 console.log(map.size); // 2
+
 // map.clear();
 for (const [key, val] of map) {
     console.log(`${key} = ${val}`);
