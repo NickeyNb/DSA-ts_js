@@ -4,10 +4,8 @@
 
 ## Structure
 
--   [
-    src : typescript code
-    build/js : compiled javascript code
-    ]
+-   [src : typescript code]
+-   [build/js : compiled javascript code]
 
 ## run
 
